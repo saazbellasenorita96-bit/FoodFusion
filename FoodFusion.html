@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FoodFusion</title>
+    <link rel="stylesheet" href="styles.css">
+	<!-- Animate.css for fade-in effects -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+<header>
+     <h1 class="animate__animated animate__fadeIn">Welcome to FoodFusion</h1>
+    </header>
+    
+    <nav class="navbar"> 
+        <!-- The Hamburger Button for Mobile -->
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <!-- Navigation Links List -->
+        <ul class="nav_links" id="nav-links">
+            <li><a href="index.html"><img src="japanese.jpg" alt="japanese" style="width: 100px; height: 70px; object-fit: cover;"></a></li>
+            <li><a href="foodfusion.php">FoodFusion</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="recipe.php">Recipe</a></li>
+            <li><a href="community.php">Community</a></li>
+            <li><a href="contact.php">Contact</a></li>
+            <li><a href="culinary.php">Culinary</a></li>
+            <li><a href="registration.php">Registration</a></li>
+        </ul>
+    </nav>
+	
+	<main>
+    <!-- Introduction -->
+    <section class="introduction" data-name="mission">
+       <img src="mission.jpg" alt="The mission of FoodFusion" style="width: 1440px; height: 300px;">
+        <h2>Mission</h2>
+        <p>The objective of FoodFusion is to encourage people to experience new food and beverages, and also benefit from recipes and other culinary activities.</p>
+        <p>There are different activities available on FoodFushion and it is linked with Japanese food and about how to prepare our own dishes quickly.</p>
+		<p>The Japanese menu is very interesting,and it also consists of nutrition. The cooking book will continue to become more appealing for people who enjoy Sushi and seafood.</p>
+    </section>
+	
+	  <!-- login Section -->
+<section> 
+    <div class="box">
+        <h2>login</h2>
+        <p>Feel free to login on FoodFusion!</p>
+        
+<form action="login.php" method="POST">
+<label for="email">Email Address</label>
+<input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+<label for="password">Password</label>
+<input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+<button type="submit">Login</button>
+</form>
+    </div>
+	
+</section>
+<!-- events Section -->
+<section class="events">
+    <h2>Cooking Events</h2>
+	
+
+    <div class="carousel">
+
+        <div class="event-slide">
+            <img src="cooking.jpg" alt="Japanese cooking workshop" style="width: 300px; height: 300px;">
+            <h3>Japanese Cooking Workshop</h3>
+            <p>We will get the opportunity to learn new Japanese dishes in the evolving world. The Japanese menu is healthy and also inspiring us with a balanced diet.</p>
+        </div>
+
+        <div class="event-slide">
+            <img src="sushi.jpg" alt="Sushi making event" style="width: 300px; height: 300px;">
+            <h3>Sushi session</h3>
+            <p>Sushi is a famous dish for seafood lover and we will get the basic recipe available at the event.</p>
+        </div>
+		
+		 <div class="event-slide">
+            <img src="Salmon.jpg" alt="Sushi making event" style="width: 300px; height: 300px;">
+            <h3>Sashimi session</h3>
+            <p>It is one of the best foods available on the Japanese market, and also appreciated by people who prefer raw seafood, such as salmon,and accompanied by a healthy salad.</p>
+        </div>
+
+        <button class="prev" aria-label="Previous cooking event">❮</button>
+        <button class="next" aria-label="Next cooking event">❯</button>
+
+    </div>
+</section>
+	 
+</main>
+
+	
+	  <script>
+        const slides = document.querySelectorAll(".event-slide");
+        const prevButton = document.querySelector(".prev");
+        const nextButton = document.querySelector(".next");
+
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.display = i === index ? "block" : "none";
+            });
+        }
+
+        nextButton.addEventListener("click", () => {
+            currentSlide++;
+
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+
+            showSlide(currentSlide);
+        });
+
+        prevButton.addEventListener("click", () => {
+            currentSlide--;
+
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            }
+
+            showSlide(currentSlide);
+        });
+
+        showSlide(currentSlide);
+    </script>
+
+<script>
+const hamburgerBtn = document.getElementById("hamburger-btn");
+const navLinks = document.getElementById("nav-links");
+
+hamburgerBtn.addEventListener("click", function() {
+    navLinks.classList.toggle("active");
+});
+</script>
+
+<!-- Cookie Consent -->
+<div class="cookie-consent" id="cookieConsent">
+    <div class="cookie-content">
+        <p>
+            We use cookies to improve your experience on FoodFusion.
+            By continuing to use our website, you agree to our use of cookies.
+        </p>
+
+        <div class="cookie-buttons">
+            <button id="acceptCookies">Accept</button>
+            <button id="rejectCookies">Reject</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const cookieConsent = document.getElementById("cookieConsent");
+const acceptCookies = document.getElementById("acceptCookies");
+const rejectCookies = document.getElementById("rejectCookies");
+
+if (
+    localStorage.getItem("cookieConsent") === "accepted" ||
+    localStorage.getItem("cookieConsent") === "rejected"
+) {
+    cookieConsent.style.display = "none";
+}
+
+acceptCookies.addEventListener("click", function() {
+    localStorage.setItem("cookieConsent", "accepted");
+    cookieConsent.style.display = "none";
+});
+
+rejectCookies.addEventListener("click", function() {
+    localStorage.setItem("cookieConsent", "rejected");
+    cookieConsent.style.display = "none";
+});
+</script>
+
+<footer>
+	<p>&copy; 2026 FoodFusion. All rights reserved. Unauthorized users will not be able to access the confidential data of  FoodFusion. Privacy policy and terms of use.</p>
+ <p>
+        <a href="privacy.php">Privacy Policy</a> |
+        <a href="terms.php">Terms of Use</a>
+		<a href="contact.php">Contact Us</a>
+    </p>
+	<h2>Instagram Facebook</h2>
+	<ul class="social">
+	  <li>
+            <a href="https://www.instagram.com/" target="_blank">
+                <img src="insta.png" alt="Instagram" style="width: 50px; height: 50px;">
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.facebook.com/" target="_blank">
+                <img src="fb11.png" alt="Facebook" style="width: 50px; height: 50px;">
+            </a>
+        </li>
+
+    </ul>
+
+    </footer>
+</body>
+</html>
